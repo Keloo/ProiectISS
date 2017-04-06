@@ -25,8 +25,8 @@ A Symfony project created on April 5, 2017, 10:34 am.
 
 ##Deadlines specs:
 1. Deadline for specific conference
-2. First deadline is the "Call for papers" where ROLE_SPEAKER users upload the abstract paper + meta info
-3. Next deadline is "Paper submission" where accepted papers are uploaded in full versions + additional meta info
+2. First deadline is the "Call for papers" where ROLE_USER users upload the abstract papers + meta info
+3. Next deadline is "Paper submission" where ROLE_SPEAKER users upload the full papers + additional meta info
 
 ##User granted actions:
 1. ROLE_SUPER_ADMIN: \
@@ -44,3 +44,6 @@ CRUD for: abstract papers
 
 5. ROLE_SPEAKER: \
 CRUD for: full paper
+
+6. ROLE_LISTENER: \
+CRUD for: chairs (paper categories are interpreted like rooms, listeners assign them-self for a specific room)
