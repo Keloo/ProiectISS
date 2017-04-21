@@ -22,6 +22,7 @@ A Symfony project created on April 5, 2017, 10:34 am.
 8. Evaluation of papers is done in the "Call for papers" deadline
 9. If paper is accepted then notify user via email. Email info: (general info + the reviewer's comments on improvement)
 10. If any of user's paper is accepted in the "Call for papers" deadline then he's promoted to ROLE_SPEAKER
+11. System must have a payment system integrated
 
 ##Deadlines specs:
 1. Deadline for specific conference
