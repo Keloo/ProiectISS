@@ -1,0 +1,12 @@
+AppBundle\Entity\PaperType:
+  type:  entity
+  table: paper_type
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 200

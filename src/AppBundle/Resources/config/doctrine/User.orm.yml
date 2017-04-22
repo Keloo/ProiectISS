@@ -13,3 +13,13 @@ AppBundle\Entity\User:
     last_name:
       type: string
       length: 200
+  oneToMany:
+    conferences:
+      targetEntity: Conference
+      mappedBy: conference
+    papers:
+      targetEntity: Paper
+      mappedBy: paper
+    paperEvaluations:
+      targetEntity: PaperEvaluation
+      mappedBy: paper_evaluation

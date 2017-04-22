@@ -1,0 +1,35 @@
+AppBundle\Entity\Paper:
+  type:  entity
+  table: paper
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 200
+    description:
+      type: text
+    file:
+      type: string
+      length: 200
+  manyToOne:
+    user:
+      targetEntity: AppBundle\Entity\User
+      inversedBy: User
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+  oneToMany:
+    paperEvaluation:
+      targetEntity: PaperEvaluation
+      mappedBy: paper_evaluation
+  oneToOne:
+    paperType:
+      targetEntity: PaperType
+      joinColumn:
+        name: paper_type_id
+        referencedColumnName: id
+      nullable: false
