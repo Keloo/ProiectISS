@@ -14,8 +14,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userAdmin = new User();
         $userAdmin
             ->setUsername('admin')
+            ->setEnabled(true)
             ->setEmail('admin@example.com')
-            ->setPassword('admin')
+            ->setPlainPassword('admin')
             ->setFirstName('Super')
             ->setLastName('Admin')
             ->setRoles(['ROLE_SUPER_ADMIN']);
@@ -26,10 +27,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user = new User();
         $user
             ->setUsername('user')
+            ->setEnabled(true)
             ->setEmail('user@example.com')
             ->setFirstName('user_first')
             ->setLastName('user_last')
-            ->setPassword('user')
+            ->setPlainPassword('user')
             ->setRoles(['ROLE_USER'])
             ->addConference($this->getReference('conference1'));
         $manager->persist($user);
@@ -39,8 +41,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $reviewer = new User();
         $reviewer
             ->setUsername('reviewer')
+            ->setEnabled(true)
             ->setEmail('reviewer@example.com')
-            ->setPassword('reviewer')
+            ->setPlainPassword('reviewer')
             ->setFirstName('reviewer_first')
             ->setLastName('reviewer_last')
             ->setRoles(['ROLE_REVIEWER'])
@@ -52,8 +55,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $listener = new User();
         $listener
             ->setUsername('listener')
+            ->setEnabled(true)
             ->setEmail('listener@example.com')
-            ->setPassword('listener')
+            ->setPlainPassword('listener')
             ->setFirstName('listener_first')
             ->setLastName('listener_last')
             ->setRoles(['ROLE_LISTENER'])
@@ -65,8 +69,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $speaker = new User();
         $speaker
             ->setUsername('speaker')
+            ->setEnabled(true)
             ->setEmail('speaker@example.com')
-            ->setPassword('speaker')
+            ->setPlainPassword('speaker')
             ->setFirstName('speaker_first')
             ->setLastName('speaker_last')
             ->setRoles(['ROLE_SPEAKER'])
@@ -79,7 +84,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $pc
             ->setUsername('pc')
             ->setEmail('pc@example.com')
-            ->setPassword('pc')
+            ->setEnabled(true)
+            ->setPlainPassword('pc')
             ->setFirstName('pc_first')
             ->setLastName('pc_last')
             ->setRoles(['ROLE_PC'])
