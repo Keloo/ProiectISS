@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h4>Select a conference that you want to participate in</h4>
+    {% for conference in conferences %}
+        <a href="{{ path('user_attach_conference', { 'conference': conference.id}) }}">{{ conference.name }}</a>
+        <br>
+    {% endfor %}
+    <br>
+    <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+{% endblock %}
