@@ -15,6 +15,9 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted(['ROLE_SUPER_ADMIN'])) {
+            return $this->redirectToRoute('sonata_admin_dashboard');
+        }
         if ($this->get('security.authorization_checker')->isGranted(['ROLE_USER'])) {
             if ($this->getUser()->getConferences()->count()) {
                 return $this->redirectToRoute('dashboard');
@@ -35,6 +38,9 @@ class DefaultController extends Controller
      */
     public function selectConference(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted(['ROLE_SUPER_ADMIN'])) {
+            return $this->redirectToRoute('sonata_admin_dashboard');
+        }
         return $this->render(':default:selectConference.html.twig', [
             'conferences' => $this->getDoctrine()->getRepository('AppBundle:Conference')->findAll(),
         ]);
