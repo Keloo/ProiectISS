@@ -3,3 +3,13 @@ services:
         class: AppBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+    admin.conference:
+        class: AppBundle\Admin\ConferenceAdmin
+        arguments: [~, AppBundle\Entity\Conference, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Conference }
+    admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
