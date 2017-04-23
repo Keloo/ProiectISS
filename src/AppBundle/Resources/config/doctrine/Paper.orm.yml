@@ -12,9 +12,11 @@ AppBundle\Entity\Paper:
       length: 200
     description:
       type: text
-    file:
+    file_name:
       type: string
       length: 200
+    updated_at:
+      type: datetime
   manyToOne:
     user:
       targetEntity: AppBundle\Entity\User

@@ -1,0 +1,4 @@
+AppBundle\Entity\Paper:
+  file:
+    mapping: paper_file
+    filename_property: file_name

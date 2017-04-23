@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Paper</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ paper.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ paper.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ paper.description }}</td>
+            </tr>
+            <tr>
+                <th>File_name</th>
+                <td>{{ paper.filename }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{% if paper.updatedat %}{{ paper.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paper_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('paper_edit', { 'id': paper.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

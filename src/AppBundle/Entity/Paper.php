@@ -2,8 +2,14 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\ORM\Mapping\Entity;
+
 /**
  * Paper
+ * @Entity
+ * @Vich\Uploadable
  */
 class Paper
 {
@@ -25,7 +31,7 @@ class Paper
     /**
      * @var string
      */
-    private $file;
+    private $file_name;
 
     /**
      * @var \AppBundle\Entity\PaperType
@@ -36,6 +42,39 @@ class Paper
      * @var \Doctrine\Common\Collections\Collection
      */
     private $paperEvaluation;
+
+    /**
+     *
+     * @Vich\UploadableField(mapping="paper_file", fileNameProperty="file_name")
+     *
+     * @var File
+     */
+    private $paper_file;
+
+    /**
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     *
+     * @return Paper
+     */
+    public function setPaperFile(File $file = null)
+    {
+        $this->paper_file = $file;
+
+        if ($file) {
+            $this->updated_at = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getPaperFile()
+    {
+        return $this->paper_file;
+    }
 
     /**
      * @var \AppBundle\Entity\User
@@ -109,27 +148,27 @@ class Paper
     }
 
     /**
-     * Set file
+     * Set fileName
      *
-     * @param string $file
+     * @param string $fileName
      *
      * @return Paper
      */
-    public function setFile($file)
+    public function setFileName($fileName)
     {
-        $this->file = $file;
+        $this->file_name = $fileName;
 
         return $this;
     }
 
     /**
-     * Get file
+     * Get fileName
      *
      * @return string
      */
-    public function getFile()
+    public function getFileName()
     {
-        return $this->file;
+        return $this->file_name;
     }
 
     /**
@@ -212,5 +251,34 @@ class Paper
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $updated_at;
+
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Paper
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 }

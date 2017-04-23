@@ -38,6 +38,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -84,6 +86,10 @@ fos_user:
 # VichUploaderBundle Configuration
 vich_uploader:
     db_driver: orm
+    mappings:
+        paper_file:
+            uri_prefix:         /paperFiles
+            upload_destination: '%kernel.root_dir%/../web/papers'
 
 # SonataAdminBundle Configuration
 sonata_block:
