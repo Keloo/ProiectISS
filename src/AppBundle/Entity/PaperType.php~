@@ -81,4 +81,3 @@ class PaperType
         return $this->paper;
     }
 }
-

@@ -214,4 +214,3 @@ class Paper
         return $this->user;
     }
 }
-

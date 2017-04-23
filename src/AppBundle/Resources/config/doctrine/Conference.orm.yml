@@ -22,10 +22,3 @@ AppBundle\Entity\Conference:
       type: datetime
     paper_submission_end:
       type: datetime
-  manyToOne:
-    user:
-      targetEntity: AppBundle\Entity\User
-      inversedBy: User
-      joinColumn:
-        name: user_id
-        referencedColumnName: id

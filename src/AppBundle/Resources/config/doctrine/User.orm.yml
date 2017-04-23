@@ -14,12 +14,20 @@ AppBundle\Entity\User:
       type: string
       length: 200
   oneToMany:
-    conferences:
-      targetEntity: Conference
-      mappedBy: conference
     papers:
       targetEntity: Paper
       mappedBy: paper
     paperEvaluations:
       targetEntity: PaperEvaluation
       mappedBy: paper_evaluation
+  manyToMany:
+    conferences:
+      targetEntity: Conference
+      joinTable:
+        name: users_conferences
+        joinColumns:
+          user_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          conference_id:
+            referencedColumnName: id

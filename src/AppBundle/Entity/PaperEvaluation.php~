@@ -110,4 +110,3 @@ class PaperEvaluation
         return $this->paper;
     }
 }
-
