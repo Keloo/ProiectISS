@@ -5,7 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Paper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 /**
  * Paper controller.
@@ -42,6 +45,7 @@ class PaperController extends Controller
         $paper = new Paper();
         $form = $this->createForm('AppBundle\Form\PaperType', $paper);
         $form->handleRequest($request);
+        $paper->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

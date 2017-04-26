@@ -5,21 +5,15 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class PaperType extends AbstractType
+class PaperTypeType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('title')
-            ->add('description')
-            ->add('updated_at')
-            ->add('paperType')
-            ->add('paper_file', VichFileType::class);
+        $builder->add('name')        ;
     }
     
     /**
@@ -28,7 +22,7 @@ class PaperType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Paper'
+            'data_class' => 'AppBundle\Entity\PaperType'
         ));
     }
 
@@ -37,7 +31,7 @@ class PaperType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_paper';
+        return 'appbundle_papertype';
     }
 
 

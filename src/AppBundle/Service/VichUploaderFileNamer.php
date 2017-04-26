@@ -4,11 +4,24 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Vich\UploaderBundle\Mapping\PropertyMapping;
 use Vich\UploaderBundle\Naming\NamerInterface;
 
 class VichUploaderFileNamer implements NamerInterface
 {
+    /** @var User  */
+    protected $user;
+
+    /**
+     * VichUploaderFileNamer constructor.
+     * @param TokenStorage $tokenStorage
+     */
+    public function __construct(TokenStorage $tokenStorage)
+    {
+        $this->user = $tokenStorage->getToken()->getUser();
+    }
+
     /**
      * @param object $object
      * @param PropertyMapping $mapping
@@ -16,8 +29,6 @@ class VichUploaderFileNamer implements NamerInterface
      */
     public function name($object, PropertyMapping $mapping)
     {
-        /** @var User $user */
-        $user = $object->getUser();
         /** @var UploadedFile $file */
         $file = $object->getPaperFile();
 
@@ -26,6 +37,6 @@ class VichUploaderFileNamer implements NamerInterface
             $extension = $file->guessExtension();
         }
 
-        return $user->getUsername().'-'.$object->getTitle().'.'.$extension;
+        return $this->user->getUsername().'-'.$object->getTitle().'.'.$extension;
     }
 }

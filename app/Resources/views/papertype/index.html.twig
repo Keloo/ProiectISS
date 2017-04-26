@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Papertypes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paperType in paperTypes %}
+            <tr>
+                <td><a href="{{ path('papertype_show', { 'id': paperType.id }) }}">{{ paperType.id }}</a></td>
+                <td>{{ paperType.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('papertype_show', { 'id': paperType.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('papertype_edit', { 'id': paperType.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('papertype_new') }}">Create a new paperType</a>
+        </li>
+    </ul>
+{% endblock %}
