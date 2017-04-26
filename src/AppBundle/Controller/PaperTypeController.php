@@ -17,6 +17,7 @@ class PaperTypeController extends Controller
     /**
      * Lists all paperType entities.
      *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/", name="papertype_index")
      * @Method("GET")
      */
@@ -34,6 +35,7 @@ class PaperTypeController extends Controller
     /**
      * Creates a new paperType entity.
      *
+     * @Security("has_role('ROLE_PC')")
      * @Route("/new", name="papertype_new")
      * @Method({"GET", "POST"})
      */
@@ -60,6 +62,7 @@ class PaperTypeController extends Controller
     /**
      * Finds and displays a paperType entity.
      *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="papertype_show")
      * @Method("GET")
      */
@@ -76,6 +79,7 @@ class PaperTypeController extends Controller
     /**
      * Displays a form to edit an existing paperType entity.
      *
+     * @Security("has_role('ROLE_PC')")
      * @Route("/{id}/edit", name="papertype_edit")
      * @Method({"GET", "POST"})
      */
@@ -101,6 +105,7 @@ class PaperTypeController extends Controller
     /**
      * Deletes a paperType entity.
      *
+     * @Security("has_role('ROLE_PC')")
      * @Route("/{id}", name="papertype_delete")
      * @Method("DELETE")
      */

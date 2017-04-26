@@ -20,6 +20,7 @@ class PaperController extends Controller
     /**
      * Lists all paper entities.
      *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/", name="paper_index")
      * @Method("GET")
      */
@@ -37,6 +38,7 @@ class PaperController extends Controller
     /**
      * Creates a new paper entity.
      *
+     * @Security("has_role('ROLE_SPEAKER')")
      * @Route("/new", name="paper_new")
      * @Method({"GET", "POST"})
      */
@@ -64,6 +66,7 @@ class PaperController extends Controller
     /**
      * Finds and displays a paper entity.
      *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="paper_show")
      * @Method("GET")
      */
@@ -80,6 +83,7 @@ class PaperController extends Controller
     /**
      * Displays a form to edit an existing paper entity.
      *
+     * @Security("has_role('ROLE_SPEAKER')")
      * @Route("/{id}/edit", name="paper_edit")
      * @Method({"GET", "POST"})
      */
@@ -105,6 +109,7 @@ class PaperController extends Controller
     /**
      * Deletes a paper entity.
      *
+     * @Security("has_role('ROLE_SPEAKER')")
      * @Route("/{id}", name="paper_delete")
      * @Method("DELETE")
      */
