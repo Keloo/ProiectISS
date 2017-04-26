@@ -20,7 +20,8 @@ class DashboardController extends Controller
         }
 
         return $this->render('default/dashboard.html.twig', [
-
         ]);
     }
+
+
 }

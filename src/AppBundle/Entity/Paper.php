@@ -45,7 +45,7 @@ class Paper
 
     /**
      *
-     * @Vich\UploadableField(mapping="paper_file", fileNameProperty="file_name")
+     * @Vich\UploadableField(mapping="paper_file", fileNameProperty="fileName")
      *
      * @var File
      */

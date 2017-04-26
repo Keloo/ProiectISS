@@ -90,6 +90,7 @@ vich_uploader:
         paper_file:
             uri_prefix:         /paperFiles
             upload_destination: '%kernel.root_dir%/../web/papers'
+            namer:              app.vich_uploader.namer
 
 # SonataAdminBundle Configuration
 sonata_block:

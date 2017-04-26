@@ -3,9 +3,13 @@
 namespace AppBundle\Entity;
 
 use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\ORM\Mapping\Entity;
 
 /**
  * Paper
+ * @Entity
+ * @Vich\Uploadable
  */
 class Paper
 {
@@ -40,13 +44,12 @@ class Paper
     private $paperEvaluation;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="paper_file", fileNameProperty="fileName")
      *
      * @var File
      */
-    private $paperFile;
+    private $paper_file;
 
     /**
      *
@@ -54,14 +57,12 @@ class Paper
      *
      * @return Paper
      */
-    public function setImageFile(File $file = null)
+    public function setPaperFile(File $file = null)
     {
-        $this->paperFile = $file;
+        $this->paper_file = $file;
 
         if ($file) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
+            $this->updated_at = new \DateTime('now');
         }
 
         return $this;
@@ -70,9 +71,9 @@ class Paper
     /**
      * @return File|null
      */
-    public function getImageFile()
+    public function getPaperFile()
     {
-        return $this->paperFile;
+        return $this->paper_file;
     }
 
     /**
@@ -251,5 +252,33 @@ class Paper
     {
         return $this->user;
     }
-}
+    /**
+     * @var \DateTime
+     */
+    private $updated_at;
 
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Paper
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+}

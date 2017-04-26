@@ -17,7 +17,6 @@ class PaperType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('file_name')
             ->add('updated_at')
             ->add('paperType')
             ->add('user')
