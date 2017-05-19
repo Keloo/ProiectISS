@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 /**
  * Paper controller.
  *
- * @Route("paper")
+ * @Route("dashboard/paper")
  */
 class PaperController extends Controller
 {
