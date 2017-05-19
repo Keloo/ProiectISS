@@ -12,7 +12,7 @@ class PaperTypeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', 'text');
+            ->add('name');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
