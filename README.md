@@ -1,7 +1,7 @@
 cms
 ===
 
-A Symfony project created on April 5, 2017, 10:34 am.
+A Symfony project created on April 5, 2017, 10:34 am by Panda Team.
 
 ##User groups:
 1. ROLE_SUPER_ADMIN (system admin)
