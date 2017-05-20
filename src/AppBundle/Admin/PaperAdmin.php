@@ -12,16 +12,14 @@ class PaperAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text')
-            ->add('file_name', 'text')
-            ->add('description', 'text');
+            ->add('title')
+            ->add('description');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('title')
-            ->add('file_name')
             ->add('description');
     }
 
@@ -30,7 +28,15 @@ class PaperAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->addIdentifier('title')
-            ->addIdentifier('file_name')
+            ->add('file_name', 'url', [
+                'route' => [
+                    'name' => 'paper_file',
+                    'identifier_parameter_name' => 'id'
+                ],
+                'attributes' => [
+                    'target' => '_blank'
+                ]
+            ])
             ->addIdentifier('description');
     }
 }

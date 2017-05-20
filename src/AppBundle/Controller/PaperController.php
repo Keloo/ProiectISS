@@ -128,6 +128,18 @@ class PaperController extends Controller
     }
 
     /**
+     * View paper file
+     *
+     * @Security("has_role('ROLE_SPEAKER')")
+     * @Route("/file/{id}", name="paper_file")
+     * @Method("GET")
+     */
+    public function paperFileAction(Request $request, Paper $paper)
+    {
+        return $this->redirect('/papers/'.$paper->getFileName());
+    }
+
+    /**
      * Creates a form to delete a paper entity.
      *
      * @param Paper $paper The paper entity
