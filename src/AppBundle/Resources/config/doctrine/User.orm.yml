@@ -16,6 +16,8 @@ AppBundle\Entity\User:
     customer:
       type: string
       length: 200
+      options:
+        nullable: true
   oneToMany:
     papers:
       targetEntity: Paper
