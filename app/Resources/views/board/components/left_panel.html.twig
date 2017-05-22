@@ -1,0 +1,101 @@
+<aside id="left-panel">
+    <!-- User info -->
+    <div class="login-info">
+            <span>
+                <p style="padding: 10px;font-size: 14px;">
+                    {#Roles: [ {{ user.roles|join(', ') }} ]#}
+                    Welcome
+                </p>
+            </span>
+    </div>
+    <!-- end user info -->
+
+    <nav>
+        <ul>
+            <li {{ app.request.attributes.get('_route') == 'dashboard' ? 'class="active"' }}>
+                <a href="{{ path('dashboard') }}" title="Dashboard">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">Dashboard</span>
+                </a>
+            </li>
+            {#<li {{ app.request.attributes.get('_route') == 'alert_index' ? 'class="active"' }}>#}
+                {#<a href="{{ path('alert_index') }}" title="Alerts">#}
+                    {#<i class="fa fa-lg fa-fw fa-exclamation"></i>#}
+                    {#<span class="menu-item-parent">Alerts</span>#}
+                {#</a>#}
+            {#</li>#}
+            {#{% if 'ROLE_HR' in user.roles %}#}
+                {#<li {{ app.request.attributes.get('_route') in ['applicant_index','jobvacancy_index'] ? 'class="active"' }}>#}
+                    {#<a href="#">#}
+                        {#<i class="fa fa-lg fa-fw fa-user"></i>#}
+                        {#<span class="menu-item-parent">Applicants</span>#}
+                    {#</a>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('applicant_index') }}">List</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('jobvacancy_index') }}">Vacancies</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</li>#}
+            {#{% endif %}#}
+            {#{% if 'ROLE_HR' in user.roles %}#}
+                {#<li {{ app.request.attributes.get('_route') in ['associatetype_index','associate_index'] ? 'class="active"' }}>#}
+                    {#<a href="#">#}
+                        {#<i class="fa fa-lg fa-fw fa-user"></i>#}
+                        {#<span class="menu-item-parent">Associates</span>#}
+                    {#</a>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('associate_index') }}">List</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('associatetype_index') }}">Types</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</li>#}
+            {#{% endif %}#}
+            {#{% if 'ROLE_HR' in user.roles %}#}
+                {#<li {{ app.request.attributes.get('_route') in ['demandtype_index','demand_index'] ? 'class="active"' }}>#}
+                    {#<a href="#">#}
+                        {#<i class="fa fa-lg fa-fw fa-paperclip"></i>#}
+                        {#<span class="menu-item-parent">Demands</span>#}
+                    {#</a>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('demand_index') }}">List</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('demandtype_index') }}">Types</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</li>#}
+            {#{% else %}#}
+                {#<li {{ app.request.attributes.get('_route') == 'demand_index' ? 'class="active"' }}>#}
+                    {#<a href="{{ path('demand_index') }}" title="Demands">#}
+                        {#<i class="fa fa-lg fa-fw fa-paperclip"></i>#}
+                        {#<span class="menu-item-parent">Demands</span>#}
+                    {#</a>#}
+                {#</li>#}
+            {#{% endif %}#}
+            {#{% if 'ROLE_HR' in user.roles %}#}
+                {#<li {{ app.request.attributes.get('_route') == 'employee_index' ? 'class="active"' }}>#}
+                    {#<a href="{{ path('employee_index') }}" title="Employees">#}
+                        {#<i class="fa fa-lg fa-fw fa-user"></i>#}
+                        {#<span class="menu-item-parent">Employees</span>#}
+                    {#</a>#}
+                {#</li>#}
+            {#{% endif %}#}
+            {#<li {{ app.request.attributes.get('_route') == 'worklog_index' ? 'class="active"' }}>#}
+                {#<a href="{{ path('worklog_index') }}" title="Work logs">#}
+                    {#<i class="fa fa-lg fa-fw fa-money"></i>#}
+                    {#<span class="menu-item-parent">Work logs</span>#}
+                {#</a>#}
+            {#</li>#}
+        </ul>
+    </nav>
+    <span class="minifyme" data-action="minifyMenu">
+        <i class="fa fa-arrow-circle-left hit"></i>
+    </span>
+</aside>

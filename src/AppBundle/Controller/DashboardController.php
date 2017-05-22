@@ -19,7 +19,8 @@ class DashboardController extends Controller
             return $this->redirectToRoute('sonata_admin_dashboard');
         }
 
-        return $this->render('default/dashboard.html.twig', [
+        return $this->render(':board:index.html.twig', [
+            'user' => $this->getUser(),
         ]);
     }
 
