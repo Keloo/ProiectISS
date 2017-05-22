@@ -1,13 +1,40 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en-us" id="extr-page">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Proiect Colectiv Panda">
+    <meta name="author" content="Panda">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>{% block title %}Proiect Colectiv{% endblock %}</title>
+
+    {% block stylesheets %}
+        {% stylesheets
+        'bundles/app/css/bootstrap.min.css'
+        'bundles/app/css/font-awesome.min.css'
+        'bundles/app/css/smartadmin-production.min.css'
+        'bundles/app/css/smartadmin-skins.min.css'
+        'bundles/app/css/demo.min.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+<body class="animated fadeInDown">
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+    '@AppBundle/Resources/public/js/libs/jquery-2.0.2.min.js'
+    '@AppBundle/Resources/public/js/libs/jquery-ui-1.10.3.min.js'
+    '@AppBundle/Resources/public/js/bootstrap/bootstrap.min.js'
+    '@AppBundle/Resources/public/js/notification/SmartNotification.min.js'
+    '@AppBundle/Resources/public/js/smartwidgets/jarvis.widget.min.js'
+    '@AppBundle/Resources/public/js/*'
+    '@AppBundle/Resources/public/js/plugin/*/*'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
 </html>

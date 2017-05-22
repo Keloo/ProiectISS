@@ -10,3 +10,7 @@ AppBundle\Entity\PaperType:
     name:
       type: string
       length: 200
+  manyToMany:
+    conferences:
+      targetEntity: AppBundle\Entity\Conference
+      mappedBy: conferences

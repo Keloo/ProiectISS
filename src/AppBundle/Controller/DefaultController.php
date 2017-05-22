@@ -26,9 +26,7 @@ class DefaultController extends Controller
             }
         }
 
-        return $this->render('default/index.html.twig', [
-            'conferences' => $this->getDoctrine()->getRepository('AppBundle:Conference')->findAll(),
-        ]);
+        return $this->redirectToRoute('fos_user_security_login');
     }
 
     /**

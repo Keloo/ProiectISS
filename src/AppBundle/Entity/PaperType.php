@@ -87,4 +87,50 @@ class PaperType
     {
         return $this->paper;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $conferences;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->conferences = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add conference
+     *
+     * @param \AppBundle\Entity\Conference $conference
+     *
+     * @return PaperType
+     */
+    public function addConference(\AppBundle\Entity\Conference $conference)
+    {
+        $this->conferences[] = $conference;
+
+        return $this;
+    }
+
+    /**
+     * Remove conference
+     *
+     * @param \AppBundle\Entity\Conference $conference
+     */
+    public function removeConference(\AppBundle\Entity\Conference $conference)
+    {
+        $this->conferences->removeElement($conference);
+    }
+
+    /**
+     * Get conferences
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConferences()
+    {
+        return $this->conferences;
+    }
 }

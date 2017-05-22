@@ -52,6 +52,13 @@ class Conference
      */
     private $user;
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName()?$this->getName():'';
+    }
 
     /**
      * Get id
@@ -253,5 +260,51 @@ class Conference
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $paperTypes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->paperTypes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add paperType
+     *
+     * @param \AppBundle\Entity\PaperType $paperType
+     *
+     * @return Conference
+     */
+    public function addPaperType(\AppBundle\Entity\PaperType $paperType)
+    {
+        $this->paperTypes[] = $paperType;
+
+        return $this;
+    }
+
+    /**
+     * Remove paperType
+     *
+     * @param \AppBundle\Entity\PaperType $paperType
+     */
+    public function removePaperType(\AppBundle\Entity\PaperType $paperType)
+    {
+        $this->paperTypes->removeElement($paperType);
+    }
+
+    /**
+     * Get paperTypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaperTypes()
+    {
+        return $this->paperTypes;
     }
 }

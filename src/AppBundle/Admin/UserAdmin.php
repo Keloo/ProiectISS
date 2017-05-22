@@ -15,7 +15,8 @@ class UserAdmin extends AbstractAdmin
             ->add('enabled')
             ->add('username')
             ->add('first_name')
-            ->add('last_name');
+            ->add('last_name')
+            ->add('conferences');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -34,6 +35,7 @@ class UserAdmin extends AbstractAdmin
             ->addIdentifier('enabled')
             ->addIdentifier('username')
             ->addIdentifier('first_name')
-            ->addIdentifier('last_name');
+            ->addIdentifier('last_name')
+            ->addIdentifier('conferences');
     }
 }
