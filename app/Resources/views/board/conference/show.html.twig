@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conference</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conference.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ conference.name }}</td>
+            </tr>
+            <tr>
+                <th>Start_time</th>
+                <td>{% if conference.starttime %}{{ conference.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>End_time</th>
+                <td>{% if conference.endtime %}{{ conference.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Call_for_papers_start</th>
+                <td>{% if conference.callforpapersstart %}{{ conference.callforpapersstart|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Call_for_papers_end</th>
+                <td>{% if conference.callforpapersend %}{{ conference.callforpapersend|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Paper_submission_start</th>
+                <td>{% if conference.papersubmissionstart %}{{ conference.papersubmissionstart|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Paper_submission_end</th>
+                <td>{% if conference.papersubmissionend %}{{ conference.papersubmissionend|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dashboard_conference_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('dashboard_conference_edit', { 'id': conference.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
