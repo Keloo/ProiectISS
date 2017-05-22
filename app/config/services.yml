@@ -26,3 +26,6 @@ services:
     app.vich_uploader.namer:
         class:     AppBundle\Service\VichUploaderFileNamer
         arguments: [ "@security.token_storage" ]
+    app.stripe:
+        class:     AppBundle\Service\StripeHelper
+        arguments: ["@service_container"]

@@ -26,6 +26,11 @@ class User extends BaseUser
 
 
     /**
+     * @var string
+     */
+    private $customer;
+
+    /**
      * Get id
      *
      * @return integer
@@ -198,5 +203,29 @@ class User extends BaseUser
     public function getPaperEvaluations()
     {
         return $this->paperEvaluations;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param string $customer
+     *
+     * @return User
+     */
+    public function setCustomer($customer)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return string
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
     }
 }

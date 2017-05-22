@@ -34,7 +34,7 @@
         "sonata-project/admin-bundle": "^3.16",
         "sonata-project/doctrine-orm-admin-bundle": "^3.1",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "symfony/assetic-bundle": "^2.8"
+        "stripe/stripe-php": "4.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -69,4 +69,5 @@
         },
         "branch-alias": null
     }
+
 }
