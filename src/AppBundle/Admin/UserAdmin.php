@@ -36,6 +36,7 @@ class UserAdmin extends AbstractAdmin
             ->addIdentifier('username')
             ->addIdentifier('first_name')
             ->addIdentifier('last_name')
-            ->addIdentifier('conferences');
+            ->addIdentifier('conferences')
+            ->addIdentifier('roles');
     }
 }
