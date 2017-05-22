@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Services;
+namespace AppBundle\Service;
 
 use Doctrine\Common\Util\Debug;
 use Stripe\Charge;
@@ -21,7 +21,7 @@ class StripeHelper {
 
     public function __construct(ContainerInterface $containerInterface){
         $this->container = $containerInterface;
-        Stripe::setApiKey($this->container->getParameter('stripeApiKey'));
+        Stripe::setApiKey($this->container->getParameter('stripe_secret_key'));
     }
 
     /**

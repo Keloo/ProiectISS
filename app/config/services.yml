@@ -28,4 +28,4 @@ services:
         arguments: [ "@security.token_storage" ]
     app.stripe:
         class:     AppBundle\Service\StripeHelper
-        arguments: []
+        arguments: ["@service_container"]

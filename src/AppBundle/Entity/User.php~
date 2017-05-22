@@ -204,33 +204,4 @@ class User extends BaseUser
     {
         return $this->paperEvaluations;
     }
-    /**
-     * @var boolean
-     */
-    private $approved;
-
-
-    /**
-     * Set approved
-     *
-     * @param boolean $approved
-     *
-     * @return User
-     */
-    public function setApproved($approved)
-    {
-        $this->approved = $approved;
-
-        return $this;
-    }
-
-    /**
-     * Get approved
-     *
-     * @return boolean
-     */
-    public function getApproved()
-    {
-        return $this->approved;
-    }
 }
