@@ -26,6 +26,11 @@ class User extends BaseUser
 
 
     /**
+     * @var string
+     */
+    private $customer;
+
+    /**
      * Get id
      *
      * @return integer

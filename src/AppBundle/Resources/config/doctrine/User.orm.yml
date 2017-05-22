@@ -13,6 +13,9 @@ AppBundle\Entity\User:
     last_name:
       type: string
       length: 200
+    customer:
+      type: string
+      length: 200
   oneToMany:
     papers:
       targetEntity: Paper

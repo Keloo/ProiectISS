@@ -16,3 +16,6 @@ services:
     app.vich_uploader.namer:
         class:     AppBundle\Service\VichUploaderFileNamer
         arguments: []
+    app.stripe:
+        class:     AppBundle\Service\StripeHelper
+        arguments: []
