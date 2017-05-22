@@ -1,45 +1,54 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Papers list</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Papers</li><li>Papers List</li>
+            </ol>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>File_name</th>
-                <th>Updated_at</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for paper in papers %}
-            <tr>
-                <td><a href="{{ path('paper_show', { 'id': paper.id }) }}">{{ paper.id }}</a></td>
-                <td>{{ paper.title }}</td>
-                <td>{{ paper.description }}</td>
-                <td>{{ paper.filename }}</td>
-                <td>{% if paper.updatedat %}{{ paper.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('paper_show', { 'id': paper.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('paper_edit', { 'id': paper.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>File_name</th>
+                    <th>Updated_at</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for paper in papers %}
+                    <tr>
+                        <td><a href="{{ path('paper_show', { 'id': paper.id }) }}">{{ paper.id }}</a></td>
+                        <td>{{ paper.title }}</td>
+                        <td>{{ paper.description }}</td>
+                        <td>{{ paper.filename }}</td>
+                        <td>{% if paper.updatedat %}{{ paper.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('paper_show', { 'id': paper.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('paper_edit', { 'id': paper.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
 
-    <ul>
-        <li>
-            <a href="{{ path('paper_new') }}">Create a new paper</a>
-        </li>
-    </ul>
+                <tr>
+                    <td colspan="7">
+                        <a class="btn btn-lg btn-primary" href="{{ path('paper_new') }}">New Paper</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

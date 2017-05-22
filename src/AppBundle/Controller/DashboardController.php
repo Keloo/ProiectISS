@@ -21,8 +21,7 @@ class DashboardController extends Controller
 
         return $this->render(':board:index.html.twig', [
             'user' => $this->getUser(),
+            'conferences' => $this->getDoctrine()->getRepository('AppBundle:Conference')->findAll(),
         ]);
     }
-
-
 }

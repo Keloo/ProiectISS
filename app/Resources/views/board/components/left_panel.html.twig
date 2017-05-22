@@ -25,20 +25,23 @@
                 {#</a>#}
             {#</li>#}
             {#{% if 'ROLE_HR' in user.roles %}#}
-                {#<li {{ app.request.attributes.get('_route') in ['applicant_index','jobvacancy_index'] ? 'class="active"' }}>#}
-                    {#<a href="#">#}
-                        {#<i class="fa fa-lg fa-fw fa-user"></i>#}
-                        {#<span class="menu-item-parent">Applicants</span>#}
-                    {#</a>#}
-                    {#<ul>#}
-                        {#<li>#}
-                            {#<a href="{{ path('applicant_index') }}">List</a>#}
-                        {#</li>#}
-                        {#<li>#}
-                            {#<a href="{{ path('jobvacancy_index') }}">Vacancies</a>#}
-                        {#</li>#}
-                    {#</ul>#}
-                {#</li>#}
+                <li {{ app.request.attributes.get('_route') in ['paper_index','papertype_index', 'dashboard_paperevaluation_index'] ? 'class="active"' }}>
+                    <a href="#">
+                        <i class="fa fa-lg fa-fw fa-user"></i>
+                        <span class="menu-item-parent">Papers</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('paper_index') }}">Papers List</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('papertype_index') }}">Paper Types List</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dashboard_paperevaluation_index') }}">Papers Evaluation List</a>
+                        </li>
+                    </ul>
+                </li>
             {#{% endif %}#}
             {#{% if 'ROLE_HR' in user.roles %}#}
                 {#<li {{ app.request.attributes.get('_route') in ['associatetype_index','associate_index'] ? 'class="active"' }}>#}
