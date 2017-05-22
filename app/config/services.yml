@@ -13,9 +13,19 @@ services:
         arguments: [~, AppBundle\Entity\User, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: User }
+    admin.paper:
+        class: AppBundle\Admin\PaperAdmin
+        arguments: [~, AppBundle\Entity\Paper, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Paper }
+    admin.papertype:
+        class: AppBundle\Admin\PaperTypeAdmin
+        arguments: [~, AppBundle\Entity\PaperType, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: PaperType }
     app.vich_uploader.namer:
         class:     AppBundle\Service\VichUploaderFileNamer
-        arguments: []
+        arguments: [ "@security.token_storage" ]
     app.stripe:
         class:     AppBundle\Service\StripeHelper
         arguments: []

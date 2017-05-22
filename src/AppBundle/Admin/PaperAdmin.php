@@ -7,33 +7,36 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class UserAdmin extends AbstractAdmin
+class PaperAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('enabled')
-            ->add('username')
-            ->add('first_name')
-            ->add('last_name');
+            ->add('title')
+            ->add('description');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('enabled')
-            ->add('username')
-            ->add('first_name')
-            ->add('last_name');
+            ->add('title')
+            ->add('description');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('enabled')
-            ->addIdentifier('username')
-            ->addIdentifier('first_name')
-            ->addIdentifier('last_name');
+            ->addIdentifier('title')
+            ->add('file_name', 'url', [
+                'route' => [
+                    'name' => 'paper_file',
+                    'identifier_parameter_name' => 'id'
+                ],
+                'attributes' => [
+                    'target' => '_blank'
+                ]
+            ])
+            ->addIdentifier('description');
     }
 }

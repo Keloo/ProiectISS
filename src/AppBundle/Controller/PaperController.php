@@ -7,17 +7,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 /**
  * Paper controller.
  *
- * @Route("paper")
+ * @Route("dashboard/paper")
  */
 class PaperController extends Controller
 {
     /**
      * Lists all paper entities.
      *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/", name="paper_index")
      * @Method("GET")
      */
@@ -35,6 +38,7 @@ class PaperController extends Controller
     /**
      * Creates a new paper entity.
      *
+     * @Security("has_role('ROLE_SPEAKER')")
      * @Route("/new", name="paper_new")
      * @Method({"GET", "POST"})
      */
@@ -43,6 +47,7 @@ class PaperController extends Controller
         $paper = new Paper();
         $form = $this->createForm('AppBundle\Form\PaperType', $paper);
         $form->handleRequest($request);
+        $paper->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -61,6 +66,7 @@ class PaperController extends Controller
     /**
      * Finds and displays a paper entity.
      *
+     * @Security("has_role('ROLE_USER')")
      * @Route("/{id}", name="paper_show")
      * @Method("GET")
      */
@@ -77,6 +83,7 @@ class PaperController extends Controller
     /**
      * Displays a form to edit an existing paper entity.
      *
+     * @Security("has_role('ROLE_SPEAKER')")
      * @Route("/{id}/edit", name="paper_edit")
      * @Method({"GET", "POST"})
      */
@@ -102,6 +109,7 @@ class PaperController extends Controller
     /**
      * Deletes a paper entity.
      *
+     * @Security("has_role('ROLE_SPEAKER')")
      * @Route("/{id}", name="paper_delete")
      * @Method("DELETE")
      */
@@ -117,6 +125,18 @@ class PaperController extends Controller
         }
 
         return $this->redirectToRoute('paper_index');
+    }
+
+    /**
+     * View paper file
+     *
+     * @Security("has_role('ROLE_SPEAKER')")
+     * @Route("/file/{id}", name="paper_file")
+     * @Method("GET")
+     */
+    public function paperFileAction(Request $request, Paper $paper)
+    {
+        return $this->redirect('/papers/'.$paper->getFileName());
     }
 
     /**
