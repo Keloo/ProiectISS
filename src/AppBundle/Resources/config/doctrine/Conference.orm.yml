@@ -22,3 +22,15 @@ AppBundle\Entity\Conference:
       type: datetime
     paper_submission_end:
       type: datetime
+  manyToMany:
+    paperTypes:
+      targetEntity: AppBundle\Entity\PaperType
+      inversedBy: paper_types
+      joinTable:
+        name: papertype_conference
+        joinColumns:
+          conference_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          paper_type_id:
+            referencedColumnName: id

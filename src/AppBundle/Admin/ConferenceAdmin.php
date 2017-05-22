@@ -18,7 +18,8 @@ class ConferenceAdmin extends AbstractAdmin
             ->add('call_for_papers_start')
             ->add('call_for_papers_end')
             ->add('paper_submission_start')
-            ->add('paper_submission_end');
+            ->add('paper_submission_end')
+            ->add('paperTypes');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -30,7 +31,8 @@ class ConferenceAdmin extends AbstractAdmin
             ->add('call_for_papers_start')
             ->add('call_for_papers_end')
             ->add('paper_submission_start')
-            ->add('paper_submission_end');
+            ->add('paper_submission_end')
+            ->add('paperTypes');
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -43,6 +45,7 @@ class ConferenceAdmin extends AbstractAdmin
             ->addIdentifier('call_for_papers_start')
             ->addIdentifier('call_for_papers_end')
             ->addIdentifier('paper_submission_start')
-            ->addIdentifier('paper_submission_end');
+            ->addIdentifier('paper_submission_end')
+            ->addIdentifier('paperTypes');
     }
 }
