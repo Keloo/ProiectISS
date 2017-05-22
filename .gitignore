@@ -17,3 +17,4 @@
 /.idea
 vagrant/.vagrant/
 web/papers/
+composer.json
