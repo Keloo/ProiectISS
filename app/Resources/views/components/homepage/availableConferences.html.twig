@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1 class="text-center">Available Conferences</h1>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Start time</th>
+                <th>End time</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for conference in conferences %}
+                    <tr>
+                        <td>{{ conference.id }}</td>
+                        <td>{{ conference.name }}</td>
+                        <td>{{ conference.startTime|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ conference.endTime|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

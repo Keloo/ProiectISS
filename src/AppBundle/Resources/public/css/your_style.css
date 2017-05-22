@@ -1,0 +1,14 @@
+html {
+    height: 100%;
+    background: none;
+}
+body {
+    background: none;
+    min-height: 100%;
+}
+.minified .login-info span {
+    visibility: hidden;
+}
+#sparks li h5 {
+    margin: 0!important;
+}
