@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Paperevaluations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Message</th>
+                <th>Rate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paperEvaluation in paperEvaluations %}
+            <tr>
+                <td><a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">{{ paperEvaluation.id }}</a></td>
+                <td>{{ paperEvaluation.message }}</td>
+                <td>{{ paperEvaluation.rate }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dashboard_paperevaluation_edit', { 'id': paperEvaluation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dashboard_paperevaluation_new') }}">Create a new paperEvaluation</a>
+        </li>
+    </ul>
+{% endblock %}

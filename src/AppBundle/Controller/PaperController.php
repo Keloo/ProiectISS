@@ -30,7 +30,7 @@ class PaperController extends Controller
 
         $papers = $em->getRepository('AppBundle:Paper')->findAll();
 
-        return $this->render('paper/index.html.twig', array(
+        return $this->render('board/paper/index.html.twig', array(
             'papers' => $papers,
         ));
     }
@@ -57,7 +57,7 @@ class PaperController extends Controller
             return $this->redirectToRoute('paper_show', array('id' => $paper->getId()));
         }
 
-        return $this->render('paper/new.html.twig', array(
+        return $this->render('board/paper/new.html.twig', array(
             'paper' => $paper,
             'form' => $form->createView(),
         ));
@@ -74,7 +74,7 @@ class PaperController extends Controller
     {
         $deleteForm = $this->createDeleteForm($paper);
 
-        return $this->render('paper/show.html.twig', array(
+        return $this->render('board/paper/show.html.twig', array(
             'paper' => $paper,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -99,7 +99,7 @@ class PaperController extends Controller
             return $this->redirectToRoute('paper_edit', array('id' => $paper->getId()));
         }
 
-        return $this->render('paper/edit.html.twig', array(
+        return $this->render('board/paper/edit.html.twig', array(
             'paper' => $paper,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

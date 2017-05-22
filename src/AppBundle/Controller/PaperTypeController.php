@@ -30,7 +30,7 @@ class PaperTypeController extends Controller
 
         $paperTypes = $em->getRepository('AppBundle:PaperType')->findAll();
 
-        return $this->render('papertype/index.html.twig', array(
+        return $this->render('board/papertype/index.html.twig', array(
             'paperTypes' => $paperTypes,
         ));
     }
@@ -56,7 +56,7 @@ class PaperTypeController extends Controller
             return $this->redirectToRoute('papertype_show', array('id' => $paperType->getId()));
         }
 
-        return $this->render('papertype/new.html.twig', array(
+        return $this->render('board/papertype/new.html.twig', array(
             'paperType' => $paperType,
             'form' => $form->createView(),
         ));
@@ -73,7 +73,7 @@ class PaperTypeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($paperType);
 
-        return $this->render('papertype/show.html.twig', array(
+        return $this->render('board/papertype/show.html.twig', array(
             'paperType' => $paperType,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -98,7 +98,7 @@ class PaperTypeController extends Controller
             return $this->redirectToRoute('papertype_edit', array('id' => $paperType->getId()));
         }
 
-        return $this->render('papertype/edit.html.twig', array(
+        return $this->render('board/papertype/edit.html.twig', array(
             'paperType' => $paperType,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
