@@ -18,31 +18,28 @@
                     <span class="menu-item-parent">Dashboard</span>
                 </a>
             </li>
-            {#<li {{ app.request.attributes.get('_route') == 'alert_index' ? 'class="active"' }}>#}
-                {#<a href="{{ path('alert_index') }}" title="Alerts">#}
-                    {#<i class="fa fa-lg fa-fw fa-exclamation"></i>#}
-                    {#<span class="menu-item-parent">Alerts</span>#}
-                {#</a>#}
-            {#</li>#}
             {#{% if 'ROLE_HR' in user.roles %}#}
-                <li {{ app.request.attributes.get('_route') in ['paper_index','papertype_index', 'dashboard_paperevaluation_index'] ? 'class="active"' }}>
+                <li {{ app.request.attributes.get('_route') in ['paper_index','papertype_index'] ? 'class="active"' }}>
                     <a href="#">
-                        <i class="fa fa-lg fa-fw fa-user"></i>
+                        <i class="fa fa-lg fa-fw fa-paperclip"></i>
                         <span class="menu-item-parent">Papers</span>
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ path('paper_index') }}">Papers List</a>
+                            <a href="{{ path('paper_index') }}">List</a>
                         </li>
                         <li>
-                            <a href="{{ path('papertype_index') }}">Paper Types List</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('dashboard_paperevaluation_index') }}">Papers Evaluation List</a>
+                            <a href="{{ path('papertype_index') }}">Types List</a>
                         </li>
                     </ul>
                 </li>
             {#{% endif %}#}
+            <li {{ app.request.attributes.get('_route') == 'dashboard_paperevaluation_index' ? 'class="active"' }}>
+                <a href="{{ path('dashboard_paperevaluation_index') }}" title="Evaluations">
+                    <i class="fa fa-lg fa-fw fa-exclamation"></i>
+                    <span class="menu-item-parent">Evaluations</span>
+                </a>
+            </li>
             {#{% if 'ROLE_HR' in user.roles %}#}
                 {#<li {{ app.request.attributes.get('_route') in ['associatetype_index','associate_index'] ? 'class="active"' }}>#}
                     {#<a href="#">#}
