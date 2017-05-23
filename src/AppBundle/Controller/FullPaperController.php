@@ -22,12 +22,18 @@ class FullPaperController extends Controller
      */
     public function indexAction()
     {
+        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
-        $fullPapers = $em->getRepository('AppBundle:FullPaper')->findAll();
+        if ($this->isGranted('ROLE_REVIEWER') || $this->isGranted('ROLE_PC')) {
+            $fullPapers = $em->getRepository('AppBundle:FullPaper')->findAll();
+        } else {
+            $fullPapers = $em->getRepository('AppBundle:FullPaper')->findBy(['user' => $user]);
+        }
 
         return $this->render('board/fullpaper/index.html.twig', array(
             'fullPapers' => $fullPapers,
+            'user' => $user,
         ));
     }
 

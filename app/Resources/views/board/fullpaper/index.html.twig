@@ -17,31 +17,37 @@
                     <th>Description</th>
                     <th>Meta Information</th>
                     <th>File_name</th>
-                    <th>Actions</th>
+                    {% if 'ROLE_SPEAKER' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
                 {% for fullPaper in fullPapers %}
                     <tr>
-                        <td><a href="{{ path('dashboard_fullpaper_show', { 'id': fullPaper.id }) }}">{{ fullPaper.id }}</a></td>
+                        <td>{{ fullPaper.id }}</td>
                         <td>{{ fullPaper.title }}</td>
                         <td>{{ fullPaper.description }}</td>
                         <td>{{ fullPaper.metaInfo }}</td>
                         <td><a target="_blank" href="{{ path('dashboard_fullpaper_file', {id: fullPaper.id}) }}">{{ fullPaper.filename }}</a></td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('dashboard_fullpaper_edit', { 'id': fullPaper.id }) }}">edit</a>
-                                </li>
-                            </ul>
-                        </td>
+                        {% if 'ROLE_SPEAKER' in user.roles %}
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('dashboard_fullpaper_edit', { 'id': fullPaper.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
-                <tr>
-                    <td colspan="7">
-                        <a class="btn btn-lg btn-primary" href="{{ path('dashboard_fullpaper_new') }}">New Full Paper</a>
-                    </td>
-                </tr>
+                {% if 'ROLE_SPEAKER' in user.roles %}
+                    <tr>
+                        <td colspan="7">
+                            <a class="btn btn-lg btn-primary" href="{{ path('dashboard_fullpaper_new') }}">New Full Paper</a>
+                        </td>
+                    </tr>
+                {% endif %}
 
                 </tbody>
             </table>

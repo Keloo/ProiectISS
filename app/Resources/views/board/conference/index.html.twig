@@ -26,7 +26,7 @@
                 <tbody>
                 {% for conference in conferences %}
                     <tr>
-                        <td><a href="{{ path('dashboard_conference_show', { 'id': conference.id }) }}">{{ conference.id }}</a></td>
+                        <td>{{ conference.id }}</td>
                         <td>{{ conference.name }}</td>
                         <td>{% if conference.starttime %}{{ conference.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if conference.endtime %}{{ conference.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
