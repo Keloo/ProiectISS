@@ -62,12 +62,13 @@ class PaperController extends Controller
             $em->persist($paper);
             $em->flush($paper);
 
-            return $this->redirectToRoute('paper_show', array('id' => $paper->getId()));
+            return $this->redirectToRoute('paper_index');
         }
 
         return $this->render('board/paper/new.html.twig', array(
             'paper' => $paper,
             'form' => $form->createView(),
+            'user' => $this->getUser(),
         ));
     }
 

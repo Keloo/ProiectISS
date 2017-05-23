@@ -228,4 +228,43 @@ class User extends BaseUser
     {
         return $this->customer;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $fullPapers;
+
+
+    /**
+     * Add fullPaper
+     *
+     * @param \AppBundle\Entity\FullPaper $fullPaper
+     *
+     * @return User
+     */
+    public function addFullPaper(\AppBundle\Entity\FullPaper $fullPaper)
+    {
+        $this->fullPapers[] = $fullPaper;
+
+        return $this;
+    }
+
+    /**
+     * Remove fullPaper
+     *
+     * @param \AppBundle\Entity\FullPaper $fullPaper
+     */
+    public function removeFullPaper(\AppBundle\Entity\FullPaper $fullPaper)
+    {
+        $this->fullPapers->removeElement($fullPaper);
+    }
+
+    /**
+     * Get fullPapers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFullPapers()
+    {
+        return $this->fullPapers;
+    }
 }

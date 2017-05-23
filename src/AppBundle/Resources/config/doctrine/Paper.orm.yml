@@ -23,14 +23,14 @@ AppBundle\Entity\Paper:
   manyToOne:
     user:
       targetEntity: AppBundle\Entity\User
-      inversedBy: User
+      inversedBy: papers
       joinColumn:
         name: user_id
         referencedColumnName: id
   oneToMany:
-    paperEvaluation:
+    paperEvaluations:
       targetEntity: PaperEvaluation
-      mappedBy: paper_evaluation
+      mappedBy: paper
   oneToOne:
     paperType:
       targetEntity: PaperType

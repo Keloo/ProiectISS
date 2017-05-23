@@ -13,4 +13,4 @@ AppBundle\Entity\PaperType:
   manyToMany:
     conferences:
       targetEntity: AppBundle\Entity\Conference
-      mappedBy: conferences
+      mappedBy: paperTypes

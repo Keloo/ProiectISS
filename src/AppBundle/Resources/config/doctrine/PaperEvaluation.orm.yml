@@ -14,7 +14,14 @@ AppBundle\Entity\PaperEvaluation:
   manyToOne:
     paper:
       targetEntity: AppBundle\Entity\Paper
-      inversedBy: Paper
+      inversedBy: paperEvaluations
       joinColumn:
         name: paper_id
         referencedColumnName: id
+    user:
+      targetEntity: AppBundle\Entity\User
+      inversedBy: paperEvaluations
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+

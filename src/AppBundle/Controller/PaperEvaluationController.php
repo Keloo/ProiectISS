@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\PaperEvaluation;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,12 +24,19 @@ class PaperEvaluationController extends Controller
      */
     public function indexAction()
     {
+        /** @var User $user */
+        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
-        $paperEvaluations = $em->getRepository('AppBundle:PaperEvaluation')->findAll();
+        if ($this->isGranted('ROLE_REVIEWER') || $this->isGranted('ROLE_PC')) {
+            $paperEvaluations = $em->getRepository('AppBundle:PaperEvaluation')->findAll();
+        } else {
+            $paperEvaluations = $user->getPaperEvaluations();
+        }
 
         return $this->render('board/paperevaluation/index.html.twig', array(
             'paperEvaluations' => $paperEvaluations,
+            'user' => $user,
         ));
     }
 

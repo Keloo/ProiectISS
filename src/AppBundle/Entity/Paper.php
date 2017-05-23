@@ -289,4 +289,19 @@ class Paper
     {
         return $this->updated_at;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $paperEvaluations;
+
+
+    /**
+     * Get paperEvaluations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaperEvaluations()
+    {
+        return $this->paperEvaluations;
+    }
 }

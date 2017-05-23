@@ -25,7 +25,7 @@ AppBundle\Entity\FullPaper:
   manyToOne:
     user:
       targetEntity: AppBundle\Entity\User
-      inversedBy: User
+      inversedBy: fullPapers
       joinColumn:
         name: user_id
         referencedColumnName: id

@@ -20,10 +20,13 @@ AppBundle\Entity\User:
   oneToMany:
     papers:
       targetEntity: Paper
-      mappedBy: paper
+      mappedBy: user
+    fullPapers:
+      targetEntity: AppBundle\Entity\FullPaper
+      mappedBy: user
     paperEvaluations:
       targetEntity: PaperEvaluation
-      mappedBy: paper_evaluation
+      mappedBy: user
   manyToMany:
     conferences:
       targetEntity: Conference
