@@ -14,7 +14,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Actions</th>
+                    {% if 'ROLE_REVIEWER' in user.roles or 'ROLE_PC' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -22,21 +24,24 @@
                     <tr>
                         <td>{{ paperType.id }}</td>
                         <td>{{ paperType.name }}</td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('papertype_edit', { 'id': paperType.id }) }}">edit</a>
-                                </li>
-                            </ul>
-                        </td>
+                        {% if 'ROLE_REVIEWER' in user.roles or 'ROLE_PC' in user.roles %}
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('papertype_edit', { 'id': paperType.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
-                <tr>
-                    <td colspan="7">
-                        <a class="btn btn-lg btn-primary" href="{{ path('papertype_new') }}">New Paper Type</a>
-                    </td>
-                </tr>
-
+                {% if 'ROLE_REVIEWER' in user.roles or 'ROLE_PC' in user.roles %}
+                    <tr>
+                        <td colspan="7">
+                            <a class="btn btn-lg btn-primary" href="{{ path('papertype_new') }}">New Paper Type</a>
+                        </td>
+                    </tr>
+                {% endif %}
                 </tbody>
             </table>
         </div>

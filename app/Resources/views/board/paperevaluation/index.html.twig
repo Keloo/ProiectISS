@@ -16,7 +16,9 @@
                     <th>Message</th>
                     <th>Rate</th>
                     <th>Paper</th>
-                    <th>Actions</th>
+                    {% if 'ROLE_REVIEWER' in user.roles or 'ROLE_PC' in user.roles %}
+                        <th>Actions</th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -26,24 +28,24 @@
                         <td>{{ paperEvaluation.message }}</td>
                         <td>{{ paperEvaluation.rate }}</td>
                         <td><a href="{{ path('paper_show', { 'id': paperEvaluation.paper.id }) }}">{{ paperEvaluation.paper.id }}</a></td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('dashboard_paperevaluation_edit', { 'id': paperEvaluation.id }) }}">edit</a>
-                                </li>
-                            </ul>
-                        </td>
+                        {% if 'ROLE_REVIEWER' in user.roles or 'ROLE_PC' in user.roles %}
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('dashboard_paperevaluation_edit', { 'id': paperEvaluation.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
-                <tr>
-                    <td colspan="7">
-                        <a class="btn btn-lg btn-primary" href="{{ path('dashboard_paperevaluation_new') }}">New Evaluation</a>
-                    </td>
-                </tr>
-
+                {% if 'ROLE_REVIEWER' in user.roles or 'ROLE_PC' in user.roles %}
+                    <tr>
+                        <td colspan="7">
+                            <a class="btn btn-lg btn-primary" href="{{ path('dashboard_paperevaluation_new') }}">New Evaluation</a>
+                        </td>
+                    </tr>
+                {% endif %}
                 </tbody>
             </table>
         </div>

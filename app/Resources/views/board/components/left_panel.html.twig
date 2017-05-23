@@ -3,7 +3,6 @@
     <div class="login-info">
             <span>
                 <p style="padding: 10px;font-size: 14px;">
-                    {#Roles: [ {{ user.roles|join(', ') }} ]#}
                     Welcome: {{ user.username }}
                 </p>
             </span>
@@ -18,22 +17,20 @@
                     <span class="menu-item-parent">Dashboard</span>
                 </a>
             </li>
-            {#{% if 'ROLE_HR' in user.roles %}#}
-                <li {{ app.request.attributes.get('_route') in ['paper_index','dashboard_fullpaper_index'] ? 'class="active"' }}>
-                    <a href="#">
-                        <i class="fa fa-lg fa-fw fa-paperclip"></i>
-                        <span class="menu-item-parent">Papers</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="{{ path('paper_index') }}">Abstract</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('dashboard_fullpaper_index') }}">Full</a>
-                        </li>
-                    </ul>
-                </li>
-            {#{% endif %}#}
+            <li {{ app.request.attributes.get('_route') in ['paper_index','dashboard_fullpaper_index'] ? 'class="active"' }}>
+                <a href="#">
+                    <i class="fa fa-lg fa-fw fa-paperclip"></i>
+                    <span class="menu-item-parent">Papers</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ path('paper_index') }}">Abstract</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('dashboard_fullpaper_index') }}">Full</a>
+                    </li>
+                </ul>
+            </li>
             <li {{ app.request.attributes.get('_route') == 'dashboard_paperevaluation_index' ? 'class="active"' }}>
                 <a href="{{ path('dashboard_paperevaluation_index') }}" title="Evaluations">
                     <i class="fa fa-lg fa-fw fa-exclamation"></i>
