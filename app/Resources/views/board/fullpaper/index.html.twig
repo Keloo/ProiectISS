@@ -17,7 +17,6 @@
                     <th>Description</th>
                     <th>Meta Information</th>
                     <th>File_name</th>
-                    <th>Updated_at</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -27,8 +26,8 @@
                         <td><a href="{{ path('dashboard_fullpaper_show', { 'id': fullPaper.id }) }}">{{ fullPaper.id }}</a></td>
                         <td>{{ fullPaper.title }}</td>
                         <td>{{ fullPaper.description }}</td>
+                        <td>{{ fullPaper.metaInfo }}</td>
                         <td><a target="_blank" href="{{ path('dashboard_fullpaper_file', {id: fullPaper.id}) }}">{{ fullPaper.filename }}</a></td>
-                        <td>{% if fullPaper.updatedat %}{{ fullPaper.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>
                             <ul>
                                 <li>

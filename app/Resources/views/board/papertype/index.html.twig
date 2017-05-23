@@ -20,7 +20,7 @@
                 <tbody>
                 {% for paperType in paperTypes %}
                     <tr>
-                        <td><a href="{{ path('papertype_show', { 'id': paperType.id }) }}">{{ paperType.id }}</a></td>
+                        <td>{{ paperType.id }}</td>
                         <td>{{ paperType.name }}</td>
                         <td>
                             <ul>
