@@ -52,6 +52,7 @@
                 </tbody>
             </table>
 
+
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -87,6 +88,25 @@
                 </tbody>
             </table>
 
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Categories</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for conference in conferences %}
+                    <tr>
+                        <td>{{ conference.name }}</td>
+                        <td>
+                            [ {{ conference.paperTypes|join(', ') }} ]
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
 
         </div>

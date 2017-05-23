@@ -53,7 +53,7 @@ class PaperTypeController extends Controller
             $em->persist($paperType);
             $em->flush($paperType);
 
-            return $this->redirectToRoute('papertype_show', array('id' => $paperType->getId()));
+            return $this->redirectToRoute('papertype_index');
         }
 
         return $this->render('board/papertype/new.html.twig', array(

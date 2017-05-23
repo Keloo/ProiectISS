@@ -21,6 +21,8 @@ class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterf
         $conference1 = new Conference();
         $conference1
             ->setName('Math Conference')
+            ->addPaperType($this->getReference('paper-type-1'))
+            ->addPaperType($this->getReference('paper-type-2'))
             ->setStartTime($startTime)
             ->setCallForPapersStart($callForPapersStart)
             ->setPaperSubmissionStart($paperSubmissionStart)
@@ -42,6 +44,8 @@ class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterf
         $conference2 = new Conference();
         $conference2
             ->setName('Informatics Conference')
+            ->addPaperType($this->getReference('paper-type-3'))
+            ->addPaperType($this->getReference('paper-type-4'))
             ->setStartTime($startTime)
             ->setCallForPapersStart($callForPapersStart)
             ->setPaperSubmissionStart($paperSubmissionStart)
@@ -55,6 +59,6 @@ class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterf
 
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 }

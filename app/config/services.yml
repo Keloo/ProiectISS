@@ -18,6 +18,11 @@ services:
         arguments: [~, AppBundle\Entity\Paper, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Paper }
+    admin.fullpaper:
+        class: AppBundle\Admin\PaperAdmin
+        arguments: [~, AppBundle\Entity\FullPaper, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: FullPaper }
     admin.papertype:
         class: AppBundle\Admin\PaperTypeAdmin
         arguments: [~, AppBundle\Entity\PaperType, ~]
