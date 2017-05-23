@@ -40,6 +40,12 @@
                     <span class="menu-item-parent">Evaluations</span>
                 </a>
             </li>
+            <li {{ app.request.attributes.get('_route') == 'dashboard_conference_index' ? 'class="active"' }}>
+                <a href="{{ path('dashboard_conference_index') }}" title="Conferences">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    <span class="menu-item-parent">Conferences</span>
+                </a>
+            </li>
             {#{% if 'ROLE_HR' in user.roles %}#}
                 {#<li {{ app.request.attributes.get('_route') in ['associatetype_index','associate_index'] ? 'class="active"' }}>#}
                     {#<a href="#">#}

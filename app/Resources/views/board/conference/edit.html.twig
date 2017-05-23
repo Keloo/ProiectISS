@@ -1,21 +1,86 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Conference edit</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Conference</li><li>Edit</li>
+            </ol>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div id="content">
 
-    <ul>
-        <li>
-            <a href="{{ path('dashboard_conference_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" role="widget">
+                <header role="heading">
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>Conference edit</h2>
+                </header>
+
+                <div role="content">
+
+                    <form action="{{ path('dashboard_conference_edit', { 'id': conference.id }) }}" method="post">
+
+                        Name:
+                        <br>
+                        {{ form_widget(edit_form.name) }}
+                        <br>
+                        <br>
+
+                        Start time:
+                        <br>
+                        {{ form_widget(edit_form.start_time) }}
+                        <br>
+                        <br>
+
+                        End time:
+                        <br>
+                        {{ form_widget(edit_form.end_time) }}
+                        <br>
+                        <br>
+
+                        Call for papers start:
+                        <br>
+                        {{ form_widget(edit_form.call_for_papers_start) }}
+                        <br>
+                        <br>
+
+                        Call for papers end:
+                        <br>
+                        {{ form_widget(edit_form.call_for_papers_end) }}
+                        <br>
+                        <br>
+
+                        Paper submission start:
+                        <br>
+                        {{ form_widget(edit_form.paper_submission_start) }}
+                        <br>
+                        <br>
+
+                        Paper submission end:
+                        <br>
+                        {{ form_widget(edit_form.paper_submission_end) }}
+                        <br>
+                        <br>
+
+                        Paper types:
+                        <br>
+                        {{ form_widget(edit_form.paperTypes) }}
+                        <br>
+                        <br>
+
+                        {{ form_widget(edit_form._token) }}
+
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Edit" />
+                    </form>
+                    <br>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

@@ -1,51 +1,59 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Conferences list</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Conference</li><li>List</li>
+            </ol>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Start_time</th>
-                <th>End_time</th>
-                <th>Call_for_papers_start</th>
-                <th>Call_for_papers_end</th>
-                <th>Paper_submission_start</th>
-                <th>Paper_submission_end</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for conference in conferences %}
-            <tr>
-                <td><a href="{{ path('dashboard_conference_show', { 'id': conference.id }) }}">{{ conference.id }}</a></td>
-                <td>{{ conference.name }}</td>
-                <td>{% if conference.starttime %}{{ conference.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if conference.endtime %}{{ conference.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if conference.callforpapersstart %}{{ conference.callforpapersstart|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if conference.callforpapersend %}{{ conference.callforpapersend|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if conference.papersubmissionstart %}{{ conference.papersubmissionstart|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if conference.papersubmissionend %}{{ conference.papersubmissionend|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('dashboard_conference_show', { 'id': conference.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('dashboard_conference_edit', { 'id': conference.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Start_time</th>
+                    <th>End_time</th>
+                    <th>Call_for_papers_start</th>
+                    <th>Call_for_papers_end</th>
+                    <th>Paper_submission_start</th>
+                    <th>Paper_submission_end</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for conference in conferences %}
+                    <tr>
+                        <td><a href="{{ path('dashboard_conference_show', { 'id': conference.id }) }}">{{ conference.id }}</a></td>
+                        <td>{{ conference.name }}</td>
+                        <td>{% if conference.starttime %}{{ conference.starttime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if conference.endtime %}{{ conference.endtime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if conference.callforpapersstart %}{{ conference.callforpapersstart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if conference.callforpapersend %}{{ conference.callforpapersend|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if conference.papersubmissionstart %}{{ conference.papersubmissionstart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if conference.papersubmissionend %}{{ conference.papersubmissionend|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('dashboard_conference_show', { 'id': conference.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dashboard_conference_edit', { 'id': conference.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7">
+                        <a class="btn btn-lg btn-primary" href="{{ path('dashboard_conference_new') }}">New Conference</a>
+                    </td>
+                </tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('dashboard_conference_new') }}">Create a new conference</a>
-        </li>
-    </ul>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

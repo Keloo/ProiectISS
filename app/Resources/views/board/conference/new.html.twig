@@ -1,16 +1,85 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Conference creation</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Conference</li><li>New</li>
+            </ol>
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div id="content">
 
-    <ul>
-        <li>
-            <a href="{{ path('dashboard_conference_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" role="widget">
+                <header role="heading">
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>New Conference</h2>
+                </header>
+
+                <div role="content">
+
+                    <form action="{{ path('dashboard_conference_new') }}" method="post">
+
+                        Name:
+                        <br>
+                        {{ form_widget(form.name) }}
+                        <br>
+                        <br>
+
+                        Start time:
+                        <br>
+                        {{ form_widget(form.start_time) }}
+                        <br>
+                        <br>
+
+                        End time:
+                        <br>
+                        {{ form_widget(form.end_time) }}
+                        <br>
+                        <br>
+
+                        Call for papers start:
+                        <br>
+                        {{ form_widget(form.call_for_papers_start) }}
+                        <br>
+                        <br>
+
+                        Call for papers end:
+                        <br>
+                        {{ form_widget(form.call_for_papers_end) }}
+                        <br>
+                        <br>
+
+                        Paper submission start:
+                        <br>
+                        {{ form_widget(form.paper_submission_start) }}
+                        <br>
+                        <br>
+
+                        Paper submission end:
+                        <br>
+                        {{ form_widget(form.paper_submission_end) }}
+                        <br>
+                        <br>
+
+                        Paper types:
+                        <br>
+                        {{ form_widget(form.paperTypes) }}
+                        <br>
+                        <br>
+
+                        {{ form_widget(form._token) }}
+
+                        <br>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Create" />
+                        <br>
+                        <br>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
