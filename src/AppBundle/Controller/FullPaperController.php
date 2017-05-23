@@ -119,6 +119,17 @@ class FullPaperController extends Controller
     }
 
     /**
+     * View paper file
+     *
+     * @Route("/file/{id}", name="dashboard_fullpaper_file")
+     * @Method("GET")
+     */
+    public function paperFileAction(Request $request, FullPaper $paper)
+    {
+        return $this->redirect('/papers/'.$paper->getFileName());
+    }
+
+    /**
      * Creates a form to delete a fullPaper entity.
      *
      * @param FullPaper $fullPaper The fullPaper entity

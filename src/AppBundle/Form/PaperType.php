@@ -39,6 +39,4 @@ class PaperType extends AbstractType
     {
         return 'appbundle_paper';
     }
-
-
 }

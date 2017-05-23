@@ -244,5 +244,33 @@ class FullPaper
     {
         return $this->user;
     }
-}
+    /**
+     * @var string
+     */
+    private $meta_info;
 
+
+    /**
+     * Set metaInfo
+     *
+     * @param string $metaInfo
+     *
+     * @return FullPaper
+     */
+    public function setMetaInfo($metaInfo)
+    {
+        $this->meta_info = $metaInfo;
+
+        return $this;
+    }
+
+    /**
+     * Get metaInfo
+     *
+     * @return string
+     */
+    public function getMetaInfo()
+    {
+        return $this->meta_info;
+    }
+}
