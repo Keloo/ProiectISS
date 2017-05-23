@@ -204,4 +204,28 @@ class User extends BaseUser
     {
         return $this->paperEvaluations;
     }
+
+    /**
+     * Set customer
+     *
+     * @param string $customer
+     *
+     * @return User
+     */
+    public function setCustomer($customer)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return string
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\FullPaper;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
@@ -32,11 +33,16 @@ class VichUploaderFileNamer implements NamerInterface
         /** @var UploadedFile $file */
         $file = $object->getPaperFile();
 
+        $prefix = '';
+        if ($object instanceof FullPaper) {
+            $prefix = 'full-';
+        }
+
         $extension = $file->getExtension();
         if (!$extension) {
             $extension = $file->guessExtension();
         }
 
-        return $this->user->getUsername().'-'.$object->getTitle().'.'.$extension;
+        return $prefix.$this->user->getUsername().'-'.$object->getTitle().'.'.$extension;
     }
 }

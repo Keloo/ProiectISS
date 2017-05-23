@@ -4,7 +4,7 @@
     <div id="main" role="main">
         <div id="ribbon">
             <ol class="breadcrumb">
-                <li>Paper</li><li>New</li>
+                <li>Full</li><li>Paper</li><li>New</li>
             </ol>
         </div>
 
@@ -13,12 +13,12 @@
             <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" role="widget">
                 <header role="heading">
                     <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
-                    <h2>New Paper</h2>
+                    <h2>New Full Paper</h2>
                 </header>
 
                 <div role="content">
 
-                    <form action="{{ path('paper_new') }}" method="post">
+                    <form action="{{ path('dashboard_fullpaper_new') }}" method="post">
 
                         Title:
                         <br>
@@ -29,6 +29,12 @@
                         Description:
                         <br>
                         {{ form_widget(form.description) }}
+                        <br>
+                        <br>
+
+                        Meta Information:
+                        <br>
+                        {{ form_widget(form.meta_info) }}
                         <br>
                         <br>
 

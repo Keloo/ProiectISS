@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fullpaper</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fullPaper.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ fullPaper.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ fullPaper.description }}</td>
+            </tr>
+            <tr>
+                <th>File_name</th>
+                <td>{{ fullPaper.filename }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{% if fullPaper.updatedat %}{{ fullPaper.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dashboard_fullpaper_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('dashboard_fullpaper_edit', { 'id': fullPaper.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

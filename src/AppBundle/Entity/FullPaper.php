@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping\Entity;
  * @Entity
  * @Vich\Uploadable
  */
-class Paper
+class FullPaper
 {
     /**
      * @var integer
@@ -34,14 +34,21 @@ class Paper
     private $file_name;
 
     /**
+     * @var \DateTime
+     */
+    private $updated_at;
+
+    /**
      * @var \AppBundle\Entity\PaperType
      */
     private $paperType;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \AppBundle\Entity\User
      */
-    private $paperEvaluation;
+    private $user;
+
+
 
     /**
      *
@@ -77,24 +84,11 @@ class Paper
     }
 
     /**
-     * @var \AppBundle\Entity\User
-     */
-    private $user;
-
-    /**
      * @return string
      */
     public function __toString()
     {
         return $this->getTitle()?$this->getTitle():'';
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->paperEvaluation = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -112,7 +106,7 @@ class Paper
      *
      * @param string $title
      *
-     * @return Paper
+     * @return FullPaper
      */
     public function setTitle($title)
     {
@@ -136,7 +130,7 @@ class Paper
      *
      * @param string $description
      *
-     * @return Paper
+     * @return FullPaper
      */
     public function setDescription($description)
     {
@@ -160,7 +154,7 @@ class Paper
      *
      * @param string $fileName
      *
-     * @return Paper
+     * @return FullPaper
      */
     public function setFileName($fileName)
     {
@@ -180,11 +174,35 @@ class Paper
     }
 
     /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return FullPaper
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
      * Set paperType
      *
      * @param \AppBundle\Entity\PaperType $paperType
      *
-     * @return Paper
+     * @return FullPaper
      */
     public function setPaperType(\AppBundle\Entity\PaperType $paperType = null)
     {
@@ -204,45 +222,11 @@ class Paper
     }
 
     /**
-     * Add paperEvaluation
-     *
-     * @param \AppBundle\Entity\PaperEvaluation $paperEvaluation
-     *
-     * @return Paper
-     */
-    public function addPaperEvaluation(\AppBundle\Entity\PaperEvaluation $paperEvaluation)
-    {
-        $this->paperEvaluation[] = $paperEvaluation;
-
-        return $this;
-    }
-
-    /**
-     * Remove paperEvaluation
-     *
-     * @param \AppBundle\Entity\PaperEvaluation $paperEvaluation
-     */
-    public function removePaperEvaluation(\AppBundle\Entity\PaperEvaluation $paperEvaluation)
-    {
-        $this->paperEvaluation->removeElement($paperEvaluation);
-    }
-
-    /**
-     * Get paperEvaluation
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPaperEvaluation()
-    {
-        return $this->paperEvaluation;
-    }
-
-    /**
      * Set user
      *
      * @param \AppBundle\Entity\User $user
      *
-     * @return Paper
+     * @return FullPaper
      */
     public function setUser(\AppBundle\Entity\User $user = null)
     {
@@ -261,32 +245,32 @@ class Paper
         return $this->user;
     }
     /**
-     * @var \DateTime
+     * @var string
      */
-    private $updated_at;
+    private $meta_info;
 
 
     /**
-     * Set updatedAt
+     * Set metaInfo
      *
-     * @param \DateTime $updatedAt
+     * @param string $metaInfo
      *
-     * @return Paper
+     * @return FullPaper
      */
-    public function setUpdatedAt($updatedAt)
+    public function setMetaInfo($metaInfo)
     {
-        $this->updated_at = $updatedAt;
+        $this->meta_info = $metaInfo;
 
         return $this;
     }
 
     /**
-     * Get updatedAt
+     * Get metaInfo
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getUpdatedAt()
+    public function getMetaInfo()
     {
-        return $this->updated_at;
+        return $this->meta_info;
     }
 }

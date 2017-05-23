@@ -11,19 +11,17 @@ class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterf
 {
     public function load(ObjectManager $manager)
     {
-        $startTime = new \DateTime('now');
-        $startTime->modify('-1 year');
-        $endTime = new \DateTime('now');
-        $endTime->modify('-10 months');
+        $startTime = new \DateTime('2017-05-01');
+        $endTime = new \DateTime('2017-06-10');
 
         $conference1 = new Conference();
         $conference1
-            ->setName('Conference_name 1')
+            ->setName('Math Conference')
             ->setStartTime($startTime)
-            ->setCallForPapersStart($startTime)
+            ->setCallForPapersStart($startTime->modify("+20 days"))
             ->setPaperSubmissionStart($startTime)
             ->setEndTime($endTime)
-            ->setCallForPapersEnd($endTime)
+            ->setCallForPapersEnd($endTime->modify("+25 days"))
             ->setPaperSubmissionEnd($endTime);
         $manager->persist($conference1);
         $manager->flush();
@@ -31,7 +29,7 @@ class LoadConferenceData extends AbstractFixture implements OrderedFixtureInterf
 
         $conference2 = new Conference();
         $conference2
-            ->setName('Conference_name 2')
+            ->setName('Informatics Conference')
             ->setStartTime($startTime->modify('+5 months'))
             ->setCallForPapersStart($startTime->modify('+5 months'))
             ->setPaperSubmissionStart($startTime->modify('+5 months'))
