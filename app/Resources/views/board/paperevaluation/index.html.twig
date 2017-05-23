@@ -1,41 +1,51 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Paperevaluations list</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Evaluations list</li>
+            </ol>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Message</th>
-                <th>Rate</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for paperEvaluation in paperEvaluations %}
-            <tr>
-                <td><a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">{{ paperEvaluation.id }}</a></td>
-                <td>{{ paperEvaluation.message }}</td>
-                <td>{{ paperEvaluation.rate }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('dashboard_paperevaluation_edit', { 'id': paperEvaluation.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div id="content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Message</th>
+                    <th>Rate</th>
+                    <th>Paper</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for paperEvaluation in paperEvaluations %}
+                    <tr>
+                        <td><a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">{{ paperEvaluation.id }}</a></td>
+                        <td>{{ paperEvaluation.message }}</td>
+                        <td>{{ paperEvaluation.rate }}</td>
+                        <td><a href="{{ path('paper_show', { 'id': paperEvaluation.paper.id }) }}">{{ paperEvaluation.paper.id }}</a></td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('dashboard_paperevaluation_edit', { 'id': paperEvaluation.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="7">
+                        <a class="btn btn-lg btn-primary" href="{{ path('dashboard_paperevaluation_new') }}">New Evaluation</a>
+                    </td>
+                </tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('dashboard_paperevaluation_new') }}">Create a new paperEvaluation</a>
-        </li>
-    </ul>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

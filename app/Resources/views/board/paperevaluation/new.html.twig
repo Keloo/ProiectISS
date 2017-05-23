@@ -1,16 +1,55 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Paperevaluation creation</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Evaluation</li><li>New</li>
+            </ol>
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div id="content">
 
-    <ul>
-        <li>
-            <a href="{{ path('dashboard_paperevaluation_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" role="widget">
+                <header role="heading">
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>New Evaluation</h2>
+                </header>
+
+                <div role="content">
+
+                    <form action="{{ path('dashboard_paperevaluation_new') }}" method="post">
+
+                        Message:
+                        <br>
+                        {{ form_widget(form.message) }}
+                        <br>
+                        <br>
+
+                        Rate:
+                        <br>
+                        {{ form_widget(form.rate) }}
+                        <br>
+                        <br>
+
+                        Paper:
+                        <br>
+                        {{ form_widget(form.paper) }}
+                        <br>
+                        <br>
+
+                        {{ form_widget(form._token) }}
+
+                        <br>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Create" />
+                        <br>
+                        <br>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

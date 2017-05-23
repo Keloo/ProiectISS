@@ -1,21 +1,56 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Paperevaluation edit</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Evaluation</li><li>Edit</li>
+            </ol>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div id="content">
 
-    <ul>
-        <li>
-            <a href="{{ path('dashboard_paperevaluation_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" role="widget">
+                <header role="heading">
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>Evaluation edit</h2>
+                </header>
+
+                <div role="content">
+
+                    <form action="{{ path('dashboard_paperevaluation_edit', { 'id': paperEvaluation.id }) }}" method="post">
+
+                        Message:
+                        <br>
+                        {{ form_widget(edit_form.message) }}
+                        <br>
+                        <br>
+
+                        Rate:
+                        <br>
+                        {{ form_widget(edit_form.rate) }}
+                        <br>
+                        <br>
+
+                        Paper:
+                        <br>
+                        {{ form_widget(edit_form.paper) }}
+                        <br>
+                        <br>
+
+                        {{ form_widget(edit_form._token) }}
+
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Edit" />
+                    </form>
+                    <br>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

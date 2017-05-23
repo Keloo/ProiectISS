@@ -1,21 +1,44 @@
-{% extends 'base.html.twig' %}
+{% extends '::board/base.html.twig' %}
 
 {% block body %}
-    <h1>Papertype edit</h1>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li>Paper Type</li><li>Edit</li>
+            </ol>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div id="content">
 
-    <ul>
-        <li>
-            <a href="{{ path('papertype_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" role="widget">
+                <header role="heading">
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>Paper Type edit</h2>
+                </header>
+
+                <div role="content">
+
+                    <form action="{{ path('papertype_edit', { 'id': paperType.id }) }}" method="post">
+
+                        Name:
+                        <br>
+                        {{ form_widget(edit_form.name) }}
+                        <br>
+                        <br>
+
+                        {{ form_widget(edit_form._token) }}
+
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Edit" />
+                    </form>
+                    <br>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

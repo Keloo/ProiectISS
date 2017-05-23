@@ -82,6 +82,14 @@ class Paper
     private $user;
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle()?$this->getTitle():'';
+    }
+
+    /**
      * Constructor
      */
     public function __construct()
