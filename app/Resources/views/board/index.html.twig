@@ -18,7 +18,21 @@
 
             <h1>Welcome</h1>
 
+            {% for conference in conferences %}
+                {% if date(conference.callForPapersStart) < date() and date(conference.callForPapersEnd) > date() %}
+                    <div class="alert alert-warning">
+                        Submit your Abstract Papers for "{{ conference.name }}"
+                    </div>
+                {% endif %}
+                {% if date(conference.paperSubmissionStart) < date() and date(conference.paperSubmissionEnd) > date() %}
+                    <div class="alert alert-warning">
+                        Submit your Full Papers for "{{ conference.name }}"
+                    </div>
+                {% endif %}
+            {% endfor %}
+
             {% include ':components:availableConferences.html.twig' %}
+
         </div>
     </div>
 {% endblock body %}

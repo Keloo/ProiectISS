@@ -56,6 +56,6 @@ class DefaultController extends Controller
         $user->addConference($conference);
         $this->getDoctrine()->getManager()->flush();
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('dashboard_conference_index');
     }
 }

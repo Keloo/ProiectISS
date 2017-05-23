@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Conference;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,12 +24,15 @@ class ConferenceController extends Controller
      */
     public function indexAction()
     {
+        /** @var User $user */
+        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
 
         $conferences = $em->getRepository('AppBundle:Conference')->findAll();
 
         return $this->render('board/conference/index.html.twig', array(
             'conferences' => $conferences,
+            'user' => $user,
         ));
     }
 
