@@ -24,7 +24,7 @@
                 <tbody>
                 {% for paperEvaluation in paperEvaluations %}
                     <tr>
-                        <td><a href="{{ path('dashboard_paperevaluation_show', { 'id': paperEvaluation.id }) }}">{{ paperEvaluation.id }}</a></td>
+                        <td>{{ paperEvaluation.id }}</td>
                         <td>{{ paperEvaluation.message }}</td>
                         <td>{{ paperEvaluation.rate }}</td>
                         <td><a href="{{ path('paper_show', { 'id': paperEvaluation.paper.id }) }}">{{ paperEvaluation.paper.id }}</a></td>

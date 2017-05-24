@@ -34,3 +34,6 @@ services:
     app.stripe:
         class:     AppBundle\Service\StripeHelper
         arguments: ["@service_container"]
+    app.paper_evaluation_helper:
+        class:    AppBundle\Service\PaperEvaluationHelper
+        arguments: []

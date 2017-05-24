@@ -40,6 +40,7 @@ class PaperController extends Controller
         return $this->render('board/paper/index.html.twig', array(
             'papers' => $papers,
             'user' => $user,
+            'paperEvaluationHelper' => $this->get('app.paper_evaluation_helper'),
         ));
     }
 

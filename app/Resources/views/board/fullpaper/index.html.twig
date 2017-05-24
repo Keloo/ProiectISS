@@ -51,6 +51,36 @@
 
                 </tbody>
             </table>
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Evaluations</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for paper in fullPapers %}
+                    <tr>
+                        <td>{{ paper.title }}</td>
+                        <td>
+                            {% for evaluation in paper.paperEvaluations %}
+                                {% if evaluation.rate < 4 %}
+                                    {% set color = 'greenLight' %}
+                                {% elseif evaluation.rate > 4 %}
+                                    {% set color = 'red' %}
+                                {% else %}
+                                    {% set color = 'orange' %}
+                                {% endif %}
+                                <span class="badge bg-color-{{ color }}">
+                                    {{ paperEvaluationHelper.rateToText(evaluation.rate) }}
+                                </span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

@@ -57,12 +57,13 @@ class PaperEvaluationController extends Controller
             $em->persist($paperEvaluation);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard_paperevaluation_show', array('id' => $paperEvaluation->getId()));
+            return $this->redirectToRoute('dashboard_paperevaluation_index');
         }
 
         return $this->render('board/paperevaluation/new.html.twig', array(
             'paperEvaluation' => $paperEvaluation,
             'form' => $form->createView(),
+            'user' => $this->getUser(),
         ));
     }
 

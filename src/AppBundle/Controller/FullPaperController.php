@@ -34,6 +34,7 @@ class FullPaperController extends Controller
         return $this->render('board/fullpaper/index.html.twig', array(
             'fullPapers' => $fullPapers,
             'user' => $user,
+            'paperEvaluationHelper' => $this->get('app.paper_evaluation_helper'),
         ));
     }
 
