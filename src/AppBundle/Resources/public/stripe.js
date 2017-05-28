@@ -15,21 +15,17 @@ $( document ).ready(function() {
     });
 
         function stripeResponseCardHandlerExistingUser(status,response){
-            console.log(response);
             if(response.error){
                 alert(response.error.message);
             } else {
                 var id = response.id;
-                // jQuery('#register-existing-user').find(".stripeTokenEventReg").val(response.id);
-                // jQuery('#register_existing_user_to_event_form').trigger('submit');
-                // $("#payForm").submit();
                 $.ajax({
                     type: 'POST',
                     url: "/app_dev.php/payment",
                     data:{response:id},
                     dataType: 'json',
                     success: function (response) {
-                        console.log('jdg');
+                        window.location.replace("/app_dev.php/dashboard");
                     },
                     error: function (jqXHR) {
                     }
