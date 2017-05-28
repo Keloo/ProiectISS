@@ -39,7 +39,7 @@ class DefaultController extends Controller
         if ($this->get('security.authorization_checker')->isGranted(['ROLE_SUPER_ADMIN'])) {
             return $this->redirectToRoute('sonata_admin_dashboard');
         }
-        return $this->render(':default:selectConference.html.twig', [
+        return $this->render(':board/components:selectConference.html.twig', [
             'conferences' => $this->getDoctrine()->getRepository('AppBundle:Conference')->findAll(),
         ]);
     }
