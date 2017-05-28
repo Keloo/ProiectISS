@@ -20,7 +20,7 @@ class StripeController extends Controller
     public function paymentAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        if ($this->get('security.authorization_checker')->isGranted(['ROLE_USER'])) {
+        if (!$this->get('security.authorization_checker')->isGranted(['ROLE_USER'])) {
             return $this->redirectToRoute("fos_user_security_login");
         }
 
